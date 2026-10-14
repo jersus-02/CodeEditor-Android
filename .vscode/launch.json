@@ -1,17 +1,19 @@
 {
   "version": "0.2.0",
   "configurations": [
+    
     {
-      "name": "Android: Run app",
-      "type": "java",
+      "name": "Android: Build + Install Debug",
+      "type": "node",
       "request": "launch",
-      "mainClass": "com.jersus.codeeditor.MainActivity",
-      "projectName": "app",
+      "runtimeExecutable": "bash",
+      "args": [
+        "-lc",
+        "export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64 && export PATH=$JAVA_HOME/bin:$PATH && ./gradlew assembleDebug installDebug"
+      ],
       "cwd": "${workspaceFolder}",
       "console": "integratedTerminal",
-      "env": {
-        "JAVA_HOME": "/usr/lib/jvm/java-21-openjdk-amd64"
-      }
+      "internalConsoleOptions": "neverOpen"
     }
   ]
 }
