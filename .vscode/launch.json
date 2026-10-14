@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Android: Run app",
+      "type": "java",
+      "request": "launch",
+      "mainClass": "com.jersus.codeeditor.MainActivity",
+      "projectName": "app",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "env": {
+        "JAVA_HOME": "/usr/lib/jvm/java-21-openjdk-amd64"
+      }
+    }
+  ]
+}
