@@ -7,6 +7,8 @@ add_library(
     native-lib.cpp
     git_engine.cpp
     extension_engine.cpp
+    text_buffer.cpp
+    highlighter.cpp
 )
 
 find_library(log-lib log)

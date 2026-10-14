@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CodeEditor-Android</string>
+    <string name="undo">Undo</string>
+    <string name="redo">Redo</string>
+    <string name="file_name">main.cpp</string>
+</resources>
