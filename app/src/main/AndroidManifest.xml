@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.jersus.codeeditor">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Required for Git remote operations like clone, fetch, and push -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -20,7 +19,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:category="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 

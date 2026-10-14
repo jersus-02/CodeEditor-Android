@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace 'com.jersus.codeeditor'
-    compileSdk 23
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.jersus.codeeditor"
         minSdk 23
-        targetSdk 23
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -26,6 +26,11 @@ android {
             path file("src/main/cpp/CMakeLists.txt")
             version "3.22.1"
         }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 }
 

@@ -1,0 +1,25 @@
+# Gradle
+.gradle/
+build/
+/app/build/
+/app/.cxx/
+.externalNativeBuild/
+.cxx/
+
+# Local machine config
+local.properties
+
+# IDEs
+.idea/
+*.iml
+.vscode/*
+!.vscode/launch.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Android
+*.apk
+*.aab
+captures/
