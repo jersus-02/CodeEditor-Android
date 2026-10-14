@@ -1,7 +1,19 @@
 {
   "version": "0.2.0",
   "configurations": [
-    
+    {
+      "name": "Android: Assemble Debug",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "bash",
+      "args": [
+        "-lc",
+        "export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64 && export PATH=$JAVA_HOME/bin:$PATH && ./gradlew assembleDebug"
+      ],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
     {
       "name": "Android: Build + Install Debug",
       "type": "node",
