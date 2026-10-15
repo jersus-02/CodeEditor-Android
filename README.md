@@ -1,2 +1,2 @@
-# CodeEditor, an edior for android
+# CodeEditor, an editor for android
 EDITOR
