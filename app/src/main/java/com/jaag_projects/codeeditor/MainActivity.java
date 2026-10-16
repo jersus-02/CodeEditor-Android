@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.Settings;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,8 +19,9 @@ public class MainActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-        	int errorcode = Main();
-        	requestStoragePermission();
+		TextView editorView = findViewById(R.id.my_text_view);
+		int errorcode = Main(editorView);
+		requestStoragePermission();
 	}
 
 	private void requestStoragePermission() {
