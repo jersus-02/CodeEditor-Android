@@ -4,7 +4,7 @@
 
 extern "C" JNIEXPORT jint JNICALL
 Java_com_jaag_1projects_codeeditor_MainActivity_Main( JNIEnv* env, jobject me,
-        jobject ui
+        jclass textview, jobject ID
 ) {
         
         return 0;
