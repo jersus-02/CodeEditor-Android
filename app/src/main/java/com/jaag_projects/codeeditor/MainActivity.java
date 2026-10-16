@@ -19,8 +19,7 @@ public class MainActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		TextView editorView = findViewById(R.id.my_text_view);
-		int errorcode = Main(editorView);
+		int errorCode Main(TextView,findViewById(R.id.my_text_view));
 		requestStoragePermission();
 	}
 
@@ -36,5 +35,5 @@ public class MainActivity extends AppCompatActivity {
 		}
 	}
     // Native C++ method declaration
-    public native int Main();
+	public native int Main(Class<?> textClass, TextView ui);
 }
