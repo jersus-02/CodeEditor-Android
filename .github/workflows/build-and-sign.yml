@@ -3,7 +3,7 @@ name: Build Release APK
 on:
   push:
     branches: [ "main" ] # Triggers whenever you push changes to main
-  workflow_dispatch:     # Allows you to manually trigger this build anytime from your screenshot page
+  workflow_dispatch:     # Allows you to manually trigger this build anytime
 
 jobs:
   build:
@@ -26,6 +26,11 @@ jobs:
     - name: Build Unsigned Release APK
       run: ./gradlew assembleRelease
 
+    # Temporary: shows which build-tools versions exist on the runner.
+    # If signing fails again, pick the highest number printed here and use it below. Delete this step when it works.
+    - name: List build tools
+      run: ls $ANDROID_HOME/build-tools
+
     - name: Sign Android Release APK
       id: sign_app
       uses: r0adkll/sign-android-release@v1
@@ -35,6 +40,8 @@ jobs:
         alias: ${{ secrets.KEY_ALIAS }}
         keyStorePassword: ${{ secrets.KEYSTORE_PASSWORD }}
         keyPassword: ${{ secrets.KEY_PASSWORD }}
+      env:
+        BUILD_TOOLS_VERSION: "34.0.0"
 
     - name: Upload Signed APK Artifact
       uses: actions/upload-artifact@v4
