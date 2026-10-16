@@ -8,6 +8,6 @@ Java_com_jaag_1projects_codeeditor_MainActivity_Main( JNIEnv* env, jobject me,
 ) {
         auto& ENV = *env;
         jmethodID setText = ENV.GetMethodID(textview, "setText", "(Ljava/lang/CharSequence;)V");
-        ENV.CallVoidMethod(ENV.GetObjectArrayElement(IDs,0), setText, ENV.NewStringUTF("hello"));
+        ENV.CallVoidMethod(ENV.GetObjectArrayElement(IDs,0), setText, ENV.NewStringUTF("CODE EDITOR BY JAAG"));
         return 0;
 }
