@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		int errorCode = Main(TextView.class,findViewById(R.id.my_text_view));
+		int errorCode = Main(TextView.class,[findViewById(R.id.tv_title)]);
 		requestStoragePermission();
 	}
 
