@@ -2,15 +2,140 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:background="@color/editor_background"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/sample_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Loading..."
-        android:textSize="18sp" />
+    <!-- Material toolbar-like row with title, Undo and Redo buttons -->
+    <LinearLayout
+        android:id="@+id/toolbar_row"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/toolbar_background"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/file_name"
+            android:textColor="@color/toolbar_title"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_undo"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:backgroundTint="@color/button_background"
+            android:minWidth="64dp"
+            android:minHeight="0dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:stateListAnimator="@null"
+            android:text="@string/undo"
+            android:textAllCaps="false"
+            android:textColor="@color/editor_text"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/btn_redo"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="@color/button_background"
+            android:minWidth="64dp"
+            android:minHeight="0dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:stateListAnimator="@null"
+            android:text="@string/redo"
+            android:textAllCaps="false"
+            android:textColor="@color/editor_text"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider_color" />
+
+    <!-- Editor filling the screen: line numbers on the left, horizontal scroll for code inside vertical ScrollView -->
+    <ScrollView
+        android:id="@+id/vertical_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/editor_background"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Line numbers TextView on the left -->
+            <TextView
+                android:id="@+id/line_numbers"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:minWidth="44dp"
+                android:background="@color/gutter_background"
+                android:fontFamily="monospace"
+                android:gravity="end|top"
+                android:includeFontPadding="false"
+                android:lineSpacingExtra="4dp"
+                android:paddingStart="8dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="8dp"
+                android:text="1"
+                android:textColor="@color/gutter_text"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/divider_color" />
+
+            <!-- Horizontal scroll for code editor filling the screen -->
+            <HorizontalScrollView
+                android:id="@+id/horizontal_scroll"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/editor_background"
+                android:fillViewport="true">
+
+                <!-- Monospace EditText: no autocorrect, no wrapping -->
+                <EditText
+                    android:id="@+id/code_editor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:fontFamily="monospace"
+                    android:gravity="top|start"
+                    android:imeOptions="flagNoExtractUi"
+                    android:includeFontPadding="false"
+                    android:inputType="textMultiLine|textNoSuggestions"
+                    android:lineSpacingExtra="4dp"
+                    android:paddingStart="8dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="8dp"
+                    android:scrollHorizontally="true"
+                    android:textColor="@color/editor_text"
+                    android:textColorHighlight="@color/selection_color"
+                    android:textSize="14sp" />
+
+            </HorizontalScrollView>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

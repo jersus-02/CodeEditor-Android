@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Background colors -->
+    <color name="editor_background">#1E1E1E</color>
+    <color name="gutter_background">#252526</color>
+    <color name="toolbar_background">#2D2D2D</color>
+    <color name="divider_color">#3C3C3C</color>
+    <color name="button_background">#3E3E42</color>
+
+    <!-- Text colors -->
+    <color name="editor_text">#D4D4D4</color>
+    <color name="gutter_text">#858585</color>
+    <color name="toolbar_title">#E0E0E0</color>
+    <color name="selection_color">#264F78</color>
+
+    <!-- Syntax highlighting colors -->
+    <color name="syntax_keyword">#569CD6</color>
+    <color name="syntax_string">#CE9178</color>
+    <color name="syntax_comment">#6A9955</color>
+    <color name="syntax_number">#B5CEA8</color>
+</resources>
