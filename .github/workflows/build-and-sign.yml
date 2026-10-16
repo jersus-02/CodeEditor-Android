@@ -2,7 +2,7 @@ name: Build Release APK
 
 on:
   push:
-    branches: [ "main" ] # Triggers whenever you push changes to main
+    branches: [ "main" , "testing" ] # Triggers whenever you push changes to main
     release:
       types: [published]
   workflow_dispatch:     # Allows you to manually trigger this build anytime
