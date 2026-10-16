@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         TextView title = findViewById(R.id.tv_title);
-        int errorCode = Main(new TextView[]{ title });
+        int errorCode = Main(TextView.class, new TextView[]{ title });
         // errorCode: 0 = ok, negative = something failed in C++
 
         requestStoragePermission();
