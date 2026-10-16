@@ -106,5 +106,5 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Native C++ method declaration. Must match Java_com_jaag_1projects_codeeditor_MainActivity_Main in main.cpp
-    public native int Main(TextView[] views);
+    public native int Main(Class<?> textClass, TextView[] views);
 }
