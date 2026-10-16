@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.jersus.codeeditor'
+    namespace 'com.jaag_projects.codeeditor'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.jersus.codeeditor"
+        applicationId "com.jaag_projects.codeeditor"
         minSdk 23
         targetSdk 34
         versionCode 1
