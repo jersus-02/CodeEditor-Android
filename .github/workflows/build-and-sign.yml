@@ -10,6 +10,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-24.04
+    
+    # 1. FIXED: Elevated token permissions to allow release creation and file attachments
+    permissions:
+      contents: write
 
     steps:
     - name: Checkout Code
@@ -35,19 +39,19 @@ jobs:
         releaseDirectory: app/build/outputs/apk/release
         signingKeyBase64: ${{ secrets.SIGNING_KEY }}
         alias: ${{ secrets.KEY_ALIAS }}
-        keyStorePassword: ${{ secrets.KEYSTORE_PASSWORD }} # Ensure matches your secret name
+        keyStorePassword: ${{ secrets.KEYSTORE_PASSWORD }}
         keyPassword: ${{ secrets.KEY_PASSWORD }}
       env:
         BUILD_TOOLS_VERSION: "34.0.0"
 
-    # Option 1: Keep the standard workflow artifact if you still want it
+    # 2. FIXED: Upgraded to v7 and set archive to false to prevent zip compression
     - name: Upload Standard Artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
-        name: CodeEditor-Signed-Release
         path: ${{ steps.sign_app.outputs.signedReleaseFile }}
+        archive: false
 
-    # Option 2: Upload the signed APK directly to the GitHub Release
+    # 3. FIXED: This step will now successfully authenticate and push the unzipped APK to your release page
     - name: Upload APK to Release
       uses: softprops/action-gh-release@v2
       if: github.event_name == 'release' && github.event.action == 'published'
