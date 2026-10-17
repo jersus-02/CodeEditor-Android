@@ -2,21 +2,21 @@ name: Build Release APK
 
 on:
   push:
-    branches: [ "main" , "testing" ] # Triggers whenever you push changes to main
-    release:
-      types: [published]
-  workflow_dispatch:     # Allows you to manually trigger this build anytime
+    branches: [ "main", "testing" ]
+  release:
+    types: [published]
+  workflow_dispatch:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
     - name: Checkout Code
       uses: actions/checkout@v4
 
     - name: Set up JDK 17
-      uses: actions/setup-java@v4
+      uses: actions/setup-java@v5
       with:
         distribution: 'zulu'
         java-version: '17'
@@ -27,11 +27,6 @@ jobs:
 
     - name: Build Unsigned Release APK
       run: ./gradlew assembleRelease
-
-    # Temporary: shows which build-tools versions exist on the runner.
-    # If signing fails again, pick the highest number printed here and use it below. Delete this step when it works.
-    - name: List build tools
-      run: ls $ANDROID_HOME/build-tools
 
     - name: Sign Android Release APK
       id: sign_app
@@ -49,4 +44,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: CodeEditor-Signed-Release
-        path: ${{ env.SIGNED_RELEASE_FILE }}
+        path: ${{ steps.sign_app.outputs.signedReleaseFile }}
