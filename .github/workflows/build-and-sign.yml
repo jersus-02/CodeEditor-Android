@@ -35,13 +35,23 @@ jobs:
         releaseDirectory: app/build/outputs/apk/release
         signingKeyBase64: ${{ secrets.SIGNING_KEY }}
         alias: ${{ secrets.KEY_ALIAS }}
-        keyStorePassword: ${{ secrets.KEYSTORE_PASSWORD }}
-        keyPassword: ${{ secrets.KEY_PASSWORD }}
+        keyStorePassword: ${{ secrets.SIGNING_KEYSTORE_PASSWORD }} # Ensure matches your secret name
+        keyPassword: ${{ secrets.SIGNING_PASSWORD }}
       env:
         BUILD_TOOLS_VERSION: "34.0.0"
 
-    - name: Upload Signed APK Artifact
+    # Option 1: Keep the standard workflow artifact if you still want it
+    - name: Upload Standard Artifact
       uses: actions/upload-artifact@v4
       with:
         name: CodeEditor-Signed-Release
         path: ${{ steps.sign_app.outputs.signedReleaseFile }}
+
+    # Option 2: Upload the signed APK directly to the GitHub Release
+    - name: Upload APK to Release
+      uses: softprops/action-gh-release@v2
+      if: github.event_name == 'release' && github.event.action == 'published'
+      with:
+        files: ${{ steps.sign_app.outputs.signedReleaseFile }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
