@@ -44,11 +44,18 @@ jobs:
       env:
         BUILD_TOOLS_VERSION: "34.0.0"
 
+    - name: Rename Signed APK
+      run: |
+        DIR=$(dirname "${{ steps.sign_app.outputs.signedReleaseFile }}")
+        mv "${{ steps.sign_app.outputs.signedReleaseFile }}" "$DIR/github_jersus-02_CodeEditor-Android.apk"
+        echo "RENAME_PATH=$DIR/github_jersus-02_CodeEditor-Android.apk" >> $GITHUB_ENV
+
     # 2. FIXED: Upgraded to v7 and set archive to false to prevent zip compression
     - name: Upload Standard Artifact
       uses: actions/upload-artifact@v7
       with:
-        path: ${{ steps.sign_app.outputs.signedReleaseFile }}
+        name: github_jersus-02_CodeEditor-Android.apk
+        path: ${{ env.RENAME_PATH }}
         archive: false
 
     # 3. FIXED: This step will now successfully authenticate and push the unzipped APK to your release page
@@ -56,6 +63,6 @@ jobs:
       uses: softprops/action-gh-release@v2
       if: github.event_name == 'release' && github.event.action == 'published'
       with:
-        files: ${{ steps.sign_app.outputs.signedReleaseFile }}
+        files: ${{ env.RENAME_PATH }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
