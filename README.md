@@ -1,4 +1,4 @@
-# CodeEditor, an editor for android
+# CodeEditor, a code editor for android
 EDITOR
 ### STAGES
 for every release there are at least 3 stages before actual release:
